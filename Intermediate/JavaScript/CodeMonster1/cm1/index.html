@@ -34,6 +34,7 @@
          //In order to draw on the canvas we need to ask it for a 'handle' to the context.  
          //Thats just what the drawing object is called.
          var c = canvas.getContext("2d");
+          c.clearRect ( 0 , 0 , canvas.width , canvas.height);
 
          //This is a variable or 'bucket' to hold the number 80.
          var size = 80; // Slashy comments can go at the end of a line of code.
@@ -45,7 +46,7 @@
         // Create gradient
         var grd = c.createLinearGradient(0,0,200,0);
         grd.addColorStop(0,"blue");
-        grd.addColorStop(1,"bright red");
+        grd.addColorStop(1,"black");
         
         // Fill with gradient
           c.fillStyle = grd;
@@ -53,6 +54,12 @@
          c.fillRect(80, 80, size, size); //And draw a filled in rectangle at position 80,80
          
         
+        c.fillStyle = "red";
+        c.font = "30px Arial";
+        var degrees = 45 * 3.14 / 180
+        c.rotate(degrees);
+        c.fillText(myText.value,0, 0/*canvas.width / 2,canvas.height / 2*/);
+         c.rotate(-degrees);
 
         
         //Can you tell the context to draw other shapes using other colors?
