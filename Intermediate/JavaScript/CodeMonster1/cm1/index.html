@@ -28,7 +28,9 @@
         
          //Here we ask the browser to give is a 'handle' to the canvas element so that we can interact with it.
          //We use the variable 'canvas' to hold that handle.
-         var canvas = document.getElementById("myCanvas");   
+         var canvas = document.getElementById("myCanvas");
+         var myText = document.getElementById("myText");
+        
          //In order to draw on the canvas we need to ask it for a 'handle' to the context.  
          //Thats just what the drawing object is called.
          var c = canvas.getContext("2d");
@@ -38,9 +40,21 @@
 
          c.fillStyle ="rgb(0, 255, 0)";  //Here we tell the 'context' what color to use in levels of red, green and blue  
          c.fillRect(20, 20, size, size);  //Here we tell the context to draw a filled in rectangle starting at x,y of 20,20 with a height and width of 'size' pixels
-         c.fillStyle ="red"; //Here we tell the context to next use the color red.
+       
+        
+        // Create gradient
+        var grd = c.createLinearGradient(0,0,200,0);
+        grd.addColorStop(0,"blue");
+        grd.addColorStop(1,"bright red");
+        
+        // Fill with gradient
+          c.fillStyle = grd;
+        //c.fillStyle ="red"; //Here we tell the context to next use the color red.
          c.fillRect(80, 80, size, size); //And draw a filled in rectangle at position 80,80
          
+        
+
+        
         //Can you tell the context to draw other shapes using other colors?
         //Check out http://www.w3schools.com/html/html5_canvas.asp
       }
@@ -84,6 +98,8 @@
     <!-- Button is just that.  A button.  The onclick attribute tells the browser what to do when you click it. -->
     <!-- In this case, we tell the browser to execute the draw() javascriipt function that we defined above inside the <script> tag. -->
     <p><button onclick="draw()">Draw!</button></p> 
+    
+    <p><input type="text" id="myText"/></p>
     
     <!-- This is our drawing canvas.  We give it the id or myCanvas so the draw() function can find it. -->
     <!-- Can you tell what the other attributes do? -->
